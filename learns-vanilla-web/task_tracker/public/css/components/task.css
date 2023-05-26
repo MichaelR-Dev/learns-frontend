@@ -1,0 +1,117 @@
+.task {
+
+    display: flex;
+    opacity: 0;
+
+    flex-direction: row;
+    flex-wrap: nowrap;
+
+    align-items: center;
+    justify-content: space-between;
+
+    height: 8vh;
+
+    width: 100%;
+
+    padding: 0;
+    margin-bottom: 7px;
+
+    overflow: hidden;
+
+    border-radius: 15px;
+
+    background-color: var(--task-color);
+
+    transition: opacity 1s ease-in-out;
+}
+
+.task > button {
+
+    display: flex;
+
+    align-items: center;
+    justify-items: center;
+
+    height: 100%;
+    width: 15%;
+
+    padding: 0;
+    margin: 0;
+
+    background-color: rgba(0, 0, 0, 0);
+    border-color: var(--prim-color);
+    
+    border-style: none;
+    border-radius: 15px;
+
+}
+
+.task > button:hover {
+
+    cursor: pointer;
+    background-color: var(--hover-color);
+
+}
+
+.task > button > img {
+
+    align-self: center;
+    justify-self: center;
+
+    height: 100%;
+    width: 100%;
+
+}
+
+.delete-task-button {
+    align-self: center;
+}
+
+.complete-task-button {
+    align-self: center;
+    justify-self: flex-end;
+}
+
+.calendar{
+    background-color: white;
+}
+
+.task-info {
+    display: flex;
+
+    overflow: hidden;
+
+    flex-direction: row;
+    flex-wrap: wrap;
+
+    text-align: center;
+
+    height: 100%;
+    width: 100%;
+
+    align-content: center;
+    justify-content: space-evenly;
+}
+
+.task-info > h1 {
+    display: inline;
+    overflow: inherit;
+
+    max-height: 70%;
+    width: 100%;
+
+    padding: 0;
+    margin: 0;
+}
+
+.task-info > h3 {
+    display: inline;
+    overflow: inherit;
+
+    text-align: center;
+
+    flex-grow: 1;
+
+    padding: 0;
+    margin: 0;
+}

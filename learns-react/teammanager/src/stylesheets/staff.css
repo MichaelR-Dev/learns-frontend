@@ -1,0 +1,176 @@
+.staff-page {
+    display: flex;
+
+    height: 100%;
+    width: 100%;
+
+    padding: 0;
+    margin: 0;
+
+    justify-content: center;
+}
+
+.staff-panel {
+    display: flex;
+
+    flex-direction: column;
+
+    align-content: center;
+    align-items: center;
+    text-align: center;
+
+    padding: 10px;
+    margin: 10px 0px;
+
+    width: 90%;
+}
+
+.staff-panel form {
+    width: 90%;
+}
+
+.staff-panel label {
+    display: flex;
+
+    color: #ff4040;
+
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+    font-weight: 700;
+
+    margin-bottom: 5px;
+
+    justify-content: center;
+    text-align: center;
+
+    flex-grow: 1;
+}
+
+.staff-panel input {
+    border: none;
+    font-size: medium;
+
+    width: 40vw;
+
+    padding: 10px 10px 10px 30px;
+    padding-left: 10px;
+    border-radius: 0px 50px 50px 0px;
+    background-color: rgba(175,175,175,0.3);
+}
+
+.staff-panel input:focus {
+    border: none;
+
+    padding: 10px 10px 10px 30px;
+    padding-left: 10px;
+    border-radius: 0px 50px 50px 0px;
+    background-color: rgba(175,175,175,0.3);
+}
+
+.staff-panel > form > button {
+    border: none;
+    font-size: medium;
+
+    padding: 10px 20px;
+    
+    border-radius: 50px 0px 0px 50px;
+    background-color: #ff4040;
+}
+
+.staff-panel > form > button:hover {
+    border: none;
+    cursor: pointer;
+
+    padding: 10px 20px;
+
+    border-radius: 50px 0px 0px 50px;
+}
+
+#myTable {
+    margin-top: 10px;
+
+    margin-left: auto;
+    margin-right: auto;
+
+    padding: 10px;
+
+    width: 100%; /* Full-width */
+    overflow-y: scroll;
+    font-size: 18px; /* Increase font-size */
+
+    background-color: rgba(212, 211, 211, 0.267);
+    border-radius: 20px 20px 20px 20px;
+    border: 2px solid #ff4040;
+}
+
+#myTable th {
+    color: black;
+    padding: 3px;
+}
+
+#myTable tbody{
+    display: flex;
+    
+    flex-direction: column;
+
+    justify-content: flex-start;
+    overflow-y: auto;
+    padding: 10px;
+
+    width: 100%;
+    height: 70%;
+}
+  
+#myTable td {
+    text-align: left; /* Left-align text */
+    padding: 6px; /* Add padding */
+}
+  
+#myTable tr {
+    width: 100%;
+    /* Add a bottom border to all table rows */
+    border-bottom: 1px solid #ddd;
+}
+  
+#myTable tr.header, #myTable tr:hover {
+    /* Add a grey background color to the table header and on hover */
+    cursor: pointer;
+    user-select: none;
+    background-color: #cacaca;
+}
+
+#myTable tr.header, #myTable tr:focus {
+    /* Add a grey background color to the table header and on hover */
+    background-color: #cacaca;
+}
+
+::-webkit-scrollbar {
+    width: 15px;
+}
+
+::-webkit-scrollbar-track {
+    background-color: #d6dee1;
+
+    border: 2px solid #ff4040;
+    border-radius: 20px;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #ff4040;
+    border-radius: 20px;
+}
+
+@media (max-width: 1075px) {
+
+    #myTable tbody{
+        display: flex;
+        
+        flex-direction: column;
+    
+        justify-content: flex-start;
+        overflow-y: auto;
+        padding: 10px;
+    
+        width: 100%;
+        height: 50vh;
+    }
+  }

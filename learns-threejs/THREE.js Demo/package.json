@@ -1,0 +1,20 @@
+{
+  "name": "roombuilder",
+  "version": "1.0.0",
+  "description": "Room Builder by MichaelR",
+  "main": "main.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MichaelR-Dev/RoomBuilder.git"
+  },
+  "author": "MichaelR-Dev",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MichaelR-Dev/RoomBuilder/issues"
+  },
+  "homepage": "https://github.com/MichaelR-Dev/RoomBuilder#readme"
+}

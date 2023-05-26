@@ -1,0 +1,76 @@
+html{
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+h1 {
+    margin-left: 1vw;
+
+    text-overflow: clip;
+    font-size: 1vw;
+
+    color: rgb(94, 94, 94);
+}
+
+.task-info > h1 {
+    font-size: 1.2vw;
+}
+
+.task-info > h3 {
+    color: rgb(75, 94, 220);
+}
+
+h3 {
+    margin-left: 1vw;
+
+    font-size: 1vw;
+    color: rgb(152, 152, 152);
+
+    text-overflow: clip;
+    text-align: right;
+}
+
+nav > h1 {
+    font-size: calc(2vw + 0.5vh);
+}
+
+nav > h1 > a {
+    display: inline;
+    text-decoration: none;
+    
+    font-size: calc(2vw + 0.5vh);
+    font-weight: 900;
+
+    color: var(--text-color);
+}
+
+a, a:visited, a:active {
+    color: inherit;
+}
+
+a:hover {
+    color: rgb(93, 93, 93);
+}
+
+.container-nav-button {
+    font-weight: 900;
+    font-size: 2vw;
+
+    color: grey;
+}
+
+.container-nav-button:hover:not(#selected) {
+    color: var(--text-color);
+}
+
+#selected {
+    color: var(--text-color);
+}
+
+.task > button {
+    
+    color: red;
+
+    font-weight: 900;
+    font-size: xx-large;
+    font-family: Arial, Helvetica, sans-serif;
+}

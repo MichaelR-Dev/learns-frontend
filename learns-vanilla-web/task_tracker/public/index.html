@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+    <head>
+
+        <!-- Standard Meta -->
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <!-- General Site Meta -->
+        <title>Task Tracker</title>
+        <meta name="description" content="Task Tracker developed by MichaelR-Dev">
+        <meta name="keywords" content="task, tracker, michaelr-dev, tracking, tasks, list, tool">
+
+        <!-- Open Graph meta tags provide information about your page when it is shared on social media platforms like Facebook, Twitter, or LinkedIn. -->
+        <meta property="og:title" content="MichaelR-Dev - Task Tracker">
+        <meta property="og:description" content="Task Tracker App by MichaelR-Dev">
+        <meta property="og:image" content="localhost:5500/Components/public/images/tracker_thumbnail.png">
+        <meta property="og:url" content="localhost:5500/Components/public/index.html">
+
+        <!-- css sources -->
+        <link rel="stylesheet" href="./css/index.css">
+        <link rel="stylesheet" href="./css/typography/typo.css">
+        <link rel="stylesheet" href="./css/components/task.css">
+        
+        <!-- js sources -->
+
+    </head>
+
+    <body>
+
+      <nav>
+        <img src="./images/tracker_thumbnail.svg" alt="Logo for a task tracker">
+        <h1>Task Tracker by <a href="https://github.com/MichaelR-Dev">MichaelR-Dev</a></h1>
+      </nav>
+      
+      <div class="container">
+
+        <!-- Panel Navigator -->
+        <div class="container-nav">
+
+          <button type="button" id="selected" module="0" class="container-nav-button">ACTIVE TASKS</button>
+          <button type="button" id="" href="#complete" module="2" class="container-nav-button">COMPLETE TASKS</button>
+
+        </div>
+
+        <!-- Active Tasks Panel -->
+        <div class="panel" id="active-panel">
+
+          <div class="module active-module">
+            <div class="task" id="primordial-task">
+
+              <button type="button" class="delete-task-button"><img src="./images/close-svgrepo-com.svg" alt="delete task button"></button>
+              <div class="task-info">
+                <h1>123456789 123456789 123456789 123456789 </h1>
+                <h3>Assigned: 01/01/23 9:00pm</h3>
+                <h3>Due: 01/01/23 10:00pm</h3>
+              </div>
+              <button type="button" class="complete-task-button"><img src="./images/checkmark-svgrepo-com.svg" alt="delete task button"></button>
+            
+            </div>
+          </div>
+
+          <!-- Calendar Panel -->
+          <div class="module active-module calendar">
+            <div>
+              
+            </div>
+          </div>
+
+          <!-- Completed Tasks Panel -->
+          <div class="module">
+
+            <div class="task">
+              <div class="task-info">
+                <h1>123456789 123456789 123456789 123456789 </h1>
+                <h3>Assigned: 01/01/23 9:00pm</h3>
+                <h3>Completed: 01/01/23 10:00pm</h3>
+              </div>
+            </div>
+
+            <div class="task">
+              <div class="task-info">
+                <h1>123456789 123456789 123456789 123456789 </h1>
+                <h3>Assigned: 01/01/23 9:00pm</h3>
+                <h3>Completed: 01/01/23 10:00pm</h3>
+              </div>
+            </div>
+
+            <div class="task">
+              <div class="task-info">
+                <h1>123456789 123456789 123456789 123456789 </h1>
+                <h3>Assigned: 01/01/23 9:00pm</h3>
+                <h3>Completed: 01/01/23 10:00pm</h3>
+              </div>
+            </div>
+
+            <div class="task">
+              <div class="task-info">
+                <h1>123456789 123456789 123456789 123456789 </h1>
+                <h3>Assigned: 01/01/23 9:00pm</h3>
+                <h3>Completed: 01/01/23 10:00pm</h3>
+              </div>
+            </div>
+
+            <div class="task">
+              <div class="task-info">
+                <h1>123456789 123456789 123456789 123456789 </h1>
+                <h3>Assigned: 01/01/23 9:00pm</h3>
+                <h3>Completed: 01/01/23 10:00pm</h3>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- js sources -->
+      <script src="./js/index.js"></script>
+
+    </body>
+
+</html>

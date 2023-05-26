@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>THREEjs Demo by MichaelR-Dev</title>
+        <style>
+            body {
+                margin: 0;
+            }
+
+            canvas {
+                width: 100%;
+                height: 100%;
+            }
+
+            @keyframes endVideo {
+                0% {
+                    opacity: 1;
+                }
+                99%{}
+                100% {
+                    opacity: 0;
+                }
+            }
+
+            video {
+                opacity: 0;
+                position: absolute;
+
+                overflow: hidden;
+                overflow: -moz-hidden-unscrollable;
+
+                animation-name: endVideo;
+                animation-iteration-count: 1;
+                animation-timing-function: none;
+                animation-duration: 5s;
+            }
+        </style>
+    </head>
+
+    <body>
+        <!--<video width="100%" height="100%" autoplay>
+            <source src="./textures/Film Burn Overlays HD  4K_1080p Youtobe.mp4" type="video/mp4">
+            Your browser does not support the video element.
+        </video>-->
+
+        <script type="module" src="./node_modules/three/build/three.js"></script>
+        <script type="module" src="./node_modules/three/examples/js/controls/OrbitControls.js"></script>
+        <script type="module" src="./objectGenerators.js"></script>
+		<script type="module" src="./main.js"></script>
+	</body>
+</html>
