@@ -6,115 +6,271 @@
 #include <iostream>
 #include <vector>
 #include <string>
+#include <chrono>
+#include <map>
+
+struct Player {
+
+    //MEMBERS
+
+    const int _playerId; //Unique Constant Players ID
+
+    std::string playerUser; //Players username
+    std::string playerIP; //Players IP
+
+    std::chrono::system_clock::time_point lastOnline; //Last time the player was online
+    std::chrono::system_clock::time_point firstJoined; //When did player first join server
+
+    bool isBanned; //Is player banned from server?
+
+    //CONSTRUCTOR
+
+    Player(const int& newPlayerId, const std::string& newPlayerUser, const std::string& newPlayerIP)
+        : _playerId(newPlayerId), playerUser(newPlayerUser), playerIP(newPlayerIP), isBanned(false)
+    {
+        firstJoined = std::chrono::system_clock::now();
+    }
+
+};
 
 struct Server {
 
-    std::string name;
-    std::string address;
+public:
 
-    bool isOnline;
+    //MEMBERS
+
+    std::string name; // Name of Server
+    std::string host; // Host for ip / domain
+    std::string port; // Port it is forwarded on
+
+    std::string version; //Version of server software
+
+    int maxConnections; //Maximum connections
+    std::map<int, Player> activeConnections = std::map<int, Player>(); //Active connections
+
+    bool isOnline = false;
+    bool isLatest = false;
+    bool enforceWhitelist = false;
+
+    //METHODS
+
+    void StartServer() {
+        
+    };
+
+    void StopServer(bool isKill, bool isRestarting) {
+
+        /*std::string serverName;
+        std::cout << "Enter the name of the server to shutdown: ";
+        std::cin >> serverName;
+
+        for (Server& server : servers) {
+            if (server.name == serverName) {
+                server.isOnline = false;
+                std::cout << "Server shutdown successfully!" << std::endl << std::endl;
+                return;
+            }
+        }
+
+        std::cout << "Server not found." << std::endl << std::endl;
+        std::cout << "Press Enter key to continue..." << std::endl << std::endl;*/
+
+    };
+
+    void KickPlayer(Player player, std::string kickMessage) {
+
+    };
+
+    void BanPlayer() {
+
+    };
+
+    void OpPlayer(Player player) {
+
+    };
+
+    void DeleteServer() {
+
+        /*std::string serverName;
+        std::cout << "Enter the name of the server to delete: ";
+        std::cin >> serverName;
+
+        for (auto it = servers.begin(); it != servers.end(); ++it) {
+            if (it->name == serverName) {
+
+                servers.erase(it);
+                std::cout << "Server deleted successfully!" << std::endl << std::endl;
+                return;
+
+            }
+        }
+
+        std::cout << "Server not found." << std::endl << std::endl;
+        std::cout << "Press Enter key to continue..." << std::endl << std::endl;*/
+
+    }
+
 };
 
+// Servers list
 std::vector<Server> servers;
+
+void Prompt(const std::string& prompt) {
+
+    std::cout << prompt;
+
+    return;
+};
+
+void PromptQuestion(const std::string& prompt, std::string& userInput) {
+
+    std::cout << prompt;
+    
+    std::getline(std::cin, userInput);
+
+    if (userInput.empty()) {
+        return PromptQuestion(prompt, userInput);
+    }
+
+    return;
+}
+
+void PromptQuestion(const std::string& prompt, int& userInput) {
+
+    std::string strToIntInput;
+
+    std::cout << prompt;
+
+    std::getline(std::cin, strToIntInput);
+
+    if (strToIntInput.empty()) {
+
+        delete &strToIntInput;
+
+        return PromptQuestion(prompt, userInput);
+    }
+
+    userInput = std::stoi(strToIntInput);
+
+    return;
+}
+
+void PromptQuestion(const std::string& prompt, int& userInput, const int& defaultValue) {
+
+    std::string strToIntInput;
+
+    std::cout << prompt;
+
+    std::getline(std::cin, strToIntInput);
+
+    if (strToIntInput.empty()) {
+
+        delete& strToIntInput;
+        userInput = defaultValue;
+
+        return;
+
+    }
+
+    userInput = std::stoi(strToIntInput);
+
+    return;
+}
+
+void PromptQuestion(const std::string& prompt, std::string& userInput, std::string& defaultValue) {
+    
+    std::cout << prompt;
+
+    std::getline(std::cin, userInput);
+
+    if (userInput.empty()) {
+        userInput = defaultValue;
+
+        return;
+    }
+
+    return;
+    
+};
 
 void ListServers() {
 
-    std::cout << "List of Online Servers:" << std::endl;
+    Prompt("List of Online Servers: \n");
 
     for (const Server& server : servers) {
         if (server.isOnline) {
-            std::cout << "Name: " << server.name << ", Address: " << server.address << std::endl;
+            Prompt("Name: " + server.name + ", Address: " + server.host + ":" + server.port + "\n");
         }
     }
 
-    std::cout << std::endl << "List of Offline Servers:" << std::endl;
+    Prompt("\n" + std::string("List of Offline Servers:") + "\n");
 
     for (const Server& server : servers) {
         if (!server.isOnline) {
-            std::cout << "Name: " << server.name << ", Address: " << server.address << std::endl;
+            Prompt("Name: " + server.name + ", Address: " + server.host + ":" + server.port + "\n");
         }
     }
 
-    std::cout << std::endl;
+    Prompt("\n");
 }
 
 void CreateServer() {
 
     Server newServer;
 
-    std::cout << "Enter server name: ";
-    std::cin.ignore();
-    std::getline(std::cin, newServer.name);
-    std::cout << "Enter server address: ";
-    std::getline(std::cin, newServer.address);
+    std::cout << std::endl;
+    
+    PromptQuestion("Enter server name: ", newServer.name);
+    PromptQuestion("Enter server hostname: ", newServer.host);
+    PromptQuestion("Enter server port: ", newServer.port);
+    PromptQuestion("Enter server max connections: ", newServer.maxConnections, 16);
 
-    newServer.isOnline = true;
+    newServer.isOnline = false;
 
     servers.push_back(newServer);
-    std::cout << "Server created successfully!" << std::endl << std::endl;
-    std::cout << "Press Enter key to continue..." << std::endl << std::endl;
+
+    Prompt("\nServer created successfully!");
+
 }
+
+void ManageServer() {
+
+};
 
 void EditServer() {
 
     std::string serverName;
     std::cout << "Enter the name of the server to edit: ";
-    std::cin >> serverName;
+    std::getline(std::cin, serverName);
 
     for (Server& server : servers) {
-        if (server.name == serverName) {
 
-            std::cout << "Enter the new address for the server: ";
-            std::cin >> server.address;
+        if (server.name == serverName && !server.isOnline) {
+
+            std::cout << "Enter the new name for the server: ";
+            std::getline(std::cin, server.name);
+
+            std::cout << "Enter the new hostname for the server: ";
+            std::getline(std::cin, server.host);
+
+            std::cout << "Enter the new port for the server: ";
+            std::getline(std::cin, server.port);
+
             std::cout << "Server edited successfully!" << std::endl << std::endl;
 
             return;
         }
-    }
+        else if(server.name == serverName && server.isOnline) {
 
-    std::cout << "Server not found." << std::endl << std::endl;
-}
-
-void ShutdownServer() {
-    std::string serverName;
-    std::cout << "Enter the name of the server to shutdown: ";
-    std::cin >> serverName;
-
-    for (Server& server : servers) {
-        if (server.name == serverName) {
-            server.isOnline = false;
-            std::cout << "Server shutdown successfully!" << std::endl << std::endl;
+            std::cout << "Server is Online and cannot be edited. Shutdown server and try again." << std::endl << std::endl;
             return;
         }
+
     }
 
     std::cout << "Server not found." << std::endl << std::endl;
-}
 
-void DeleteServer() {
-
-    std::string serverName;
-    std::cout << "Enter the name of the server to delete: ";
-    std::cin >> serverName;
-
-    for (auto it = servers.begin(); it != servers.end(); ++it) {
-        if (it->name == serverName) {
-
-            servers.erase(it);
-            std::cout << "Server deleted successfully!" << std::endl << std::endl;
-            return;
-
-        }
-    }
-
-    std::cout << "Server not found." << std::endl << std::endl;
-}
-
-void ClearInputBuffer() {
-
-    std::cin.clear();
-    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-
+    return;
 }
 
 int main() {
@@ -122,33 +278,31 @@ int main() {
     int option;
 
     do {
+
         std::cout << "Select an option:" << std::endl << std::endl;
+
         std::cout << "1. List Online Servers" << std::endl;
-        std::cout << "2. Create Server" << std::endl;
-        std::cout << "3. Edit Server" << std::endl;
-        std::cout << "4. Shutdown Server" << std::endl;
-        std::cout << "5. Delete Server" << std::endl;
-        std::cout << "6. Exit" << std::endl << std::endl;
-        std::cout << "Option: ";
-        std::cin >> option;
+        std::cout << "2. Manage Server" << std::endl;
+        std::cout << "3. Create Server" << std::endl;
+        std::cout << "4. Edit Server Details" << std::endl;
+        std::cout << "5. Exit" << std::endl << std::endl;
+        
+        PromptQuestion("\nOption: \n", option);
 
         switch (option) {
         case 1:
             ListServers();
             break;
         case 2:
-            CreateServer();
+            ManageServer();
             break;
         case 3:
-            EditServer();
+            CreateServer();
             break;
         case 4:
-            ShutdownServer();
+            EditServer();
             break;
         case 5:
-            DeleteServer();
-            break;
-        case 6:
             std::cout << "Exiting..." << std::endl;
             break;
         default:
@@ -156,8 +310,8 @@ int main() {
             break;
         }
 
-        ClearInputBuffer(); // Clear input buffer to prevent multiple words affecting the next cin
-    } while (option != 6);
+        //ClearInputBuffer(); // Clear input buffer to prevent multiple words affecting the next cin
+    } while (option != 5);
 
     return 0;
 }
