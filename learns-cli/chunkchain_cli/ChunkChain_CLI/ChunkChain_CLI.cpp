@@ -1,197 +1,21 @@
 // ChunkChain_CLI.cpp : This file contains the 'main' function. Program execution begins and ends there.
 //
 
-#include <iostream>
-
+//Dependencies
 #include <iostream>
 #include <vector>
 #include <string>
 #include <chrono>
 #include <map>
 
-struct Player {
-
-    //MEMBERS
-
-    const int _playerId; //Unique Constant Players ID
-
-    std::string playerUser; //Players username
-    std::string playerIP; //Players IP
-
-    std::chrono::system_clock::time_point lastOnline; //Last time the player was online
-    std::chrono::system_clock::time_point firstJoined; //When did player first join server
-
-    bool isBanned; //Is player banned from server?
-
-    //CONSTRUCTOR
-
-    Player(const int& newPlayerId, const std::string& newPlayerUser, const std::string& newPlayerIP)
-        : _playerId(newPlayerId), playerUser(newPlayerUser), playerIP(newPlayerIP), isBanned(false)
-    {
-        firstJoined = std::chrono::system_clock::now();
-    }
-
-};
-
-struct Server {
-
-public:
-
-    //MEMBERS
-
-    std::string name; // Name of Server
-    std::string host; // Host for ip / domain
-    std::string port; // Port it is forwarded on
-
-    std::string version; //Version of server software
-
-    int maxConnections; //Maximum connections
-    std::map<int, Player> activeConnections = std::map<int, Player>(); //Active connections
-
-    bool isOnline = false;
-    bool isLatest = false;
-    bool enforceWhitelist = false;
-
-    //METHODS
-
-    void StartServer() {
-        
-    };
-
-    void StopServer(bool isKill, bool isRestarting) {
-
-        /*std::string serverName;
-        std::cout << "Enter the name of the server to shutdown: ";
-        std::cin >> serverName;
-
-        for (Server& server : servers) {
-            if (server.name == serverName) {
-                server.isOnline = false;
-                std::cout << "Server shutdown successfully!" << std::endl << std::endl;
-                return;
-            }
-        }
-
-        std::cout << "Server not found." << std::endl << std::endl;
-        std::cout << "Press Enter key to continue..." << std::endl << std::endl;*/
-
-    };
-
-    void KickPlayer(Player player, std::string kickMessage) {
-
-    };
-
-    void BanPlayer() {
-
-    };
-
-    void OpPlayer(Player player) {
-
-    };
-
-    void DeleteServer() {
-
-        /*std::string serverName;
-        std::cout << "Enter the name of the server to delete: ";
-        std::cin >> serverName;
-
-        for (auto it = servers.begin(); it != servers.end(); ++it) {
-            if (it->name == serverName) {
-
-                servers.erase(it);
-                std::cout << "Server deleted successfully!" << std::endl << std::endl;
-                return;
-
-            }
-        }
-
-        std::cout << "Server not found." << std::endl << std::endl;
-        std::cout << "Press Enter key to continue..." << std::endl << std::endl;*/
-
-    }
-
-};
+//Internal Dependencies
+#include "Player.h"
+#include "Server.h"
+#include "Prompts.h"
 
 // Servers list
 std::vector<Server> servers;
 
-void Prompt(const std::string& prompt) {
-
-    std::cout << prompt;
-
-    return;
-};
-
-void PromptQuestion(const std::string& prompt, std::string& userInput) {
-
-    std::cout << prompt;
-    
-    std::getline(std::cin, userInput);
-
-    if (userInput.empty()) {
-        return PromptQuestion(prompt, userInput);
-    }
-
-    return;
-}
-
-void PromptQuestion(const std::string& prompt, int& userInput) {
-
-    std::string strToIntInput;
-
-    std::cout << prompt;
-
-    std::getline(std::cin, strToIntInput);
-
-    if (strToIntInput.empty()) {
-
-        delete &strToIntInput;
-
-        return PromptQuestion(prompt, userInput);
-    }
-
-    userInput = std::stoi(strToIntInput);
-
-    return;
-}
-
-void PromptQuestion(const std::string& prompt, int& userInput, const int& defaultValue) {
-
-    std::string strToIntInput;
-
-    std::cout << prompt;
-
-    std::getline(std::cin, strToIntInput);
-
-    if (strToIntInput.empty()) {
-
-        delete& strToIntInput;
-        userInput = defaultValue;
-
-        return;
-
-    }
-
-    userInput = std::stoi(strToIntInput);
-
-    return;
-}
-
-void PromptQuestion(const std::string& prompt, std::string& userInput, std::string& defaultValue) {
-    
-    std::cout << prompt;
-
-    std::getline(std::cin, userInput);
-
-    if (userInput.empty()) {
-        userInput = defaultValue;
-
-        return;
-    }
-
-    return;
-    
-};
 
 void ListServers() {
 

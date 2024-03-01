@@ -1,7 +1,9 @@
+setTimeout(() => {
+  console.log("");
+}, 2000);
+
 //External Imports
 const fs = require('fs');
-const readline = require('readline');
-const rl = readline.createInterface({input: process.stdin, output: process.stdout});
 
 //Internal Imports
 const Menu = require('./menu');
@@ -56,7 +58,7 @@ function isNumeric(str) {
 }
 
 const main = async () => {
-
+  await menu.PromptAnyKey();
   const menu = new Menu();
 
   if(!fs.existsSync(bonesPath)){
